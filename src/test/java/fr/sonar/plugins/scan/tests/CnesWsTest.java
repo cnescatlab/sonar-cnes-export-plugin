@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.sonar.api.server.ws.WebService;
 import org.sonar.api.server.ws.WsTester;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.Assert.*;
 
 /**
  * Test for the CnesWs class
@@ -38,10 +38,10 @@ public class CnesWsTest {
      */
     @Test
     public void controllerTest() {
-        assertThat(controller).isNotNull();
-        assertThat(controller.path()).isEqualTo("api/cnesexport");
-        assertThat(controller.description()).isNotEmpty();
-        assertThat(controller.actions().size()).isEqualTo(1);
+        assertNotNull(controller);
+        assertEquals("api/cnesexport", controller.path());
+        assertFalse(controller.description().isEmpty());
+        assertEquals(1, controller.actions().size());
     }
 
     /**
@@ -51,8 +51,8 @@ public class CnesWsTest {
     @Test
     public void exportWebServiceTest() {
         final WebService.Action getTree = controller.action("export");
-        assertThat(getTree).isNotNull();
-        assertThat(getTree.key()).isEqualTo("export");
-        assertThat(getTree.params().size()).isEqualTo(1);
+        assertNotNull(getTree);
+        assertEquals("export", getTree.key());
+        assertEquals(1, getTree.params().size());
     }
 }
