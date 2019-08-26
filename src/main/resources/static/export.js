@@ -14,10 +14,36 @@
  * You should have received a copy of the GNU General Public License
  * along with cnesexport.  If not, see <http://www.gnu.org/licenses/>.
  */
+var isDisplayedExporting;
+window.registerExtension('cnesexport/export', function (options){
+    var jquery = document.createElement('script');
+    jquery.src = '/static/cnesexport/jquery.min.js';
+    if(window.jQuery==null)document.head.appendChild(jquery);
+    options.el.innerHTML = '<div id="cnesscanload" class="page-wrapper-simple"><div class="page-simple"><h1 class="maintenance-title text-center">cnes-export is loading, please wait...</h1></div></div>'
+    waitjQueryExport(options);
 
-window.registerExtension('cnesexport/export', function (options) {
+
+    // return a function, which is called when the page is being closed
+    return function () {
+        isDisplayedExporting = false;
+        // clear elements of this page
+        options.el.textContent = '';
+    };
+})
+
+function waitjQueryExport(options){
+  // check if jquery is loaded...
+  if(window.jQuery == null){
+    setTimeout(waitjQueryExport, 100, options);
+  }
+  else{
+    registerCnesExport(options)
+  }
+}
+
+function registerCnesExport(options){
     // let's create a flag telling if the page is still displayed
-    var isDisplayedExporting = true;
+    isDisplayedExporting = true;
 
     /**
      * Log information in the bottom text area
@@ -150,6 +176,7 @@ window.registerExtension('cnesexport/export', function (options) {
         // Add html template
         var template = document.createElement("div");
         template.setAttribute("id", "template");
+        options.el.innerHTML = "";
         options.el.appendChild(template);
         // retrieve template from html
         $('#template').load('../../static/cnesexport/templates/exportForm.html', function(){
@@ -193,4 +220,4 @@ window.registerExtension('cnesexport/export', function (options) {
         // clean elements of this page
         options.el.textContent = '';
     };
-});
+}
