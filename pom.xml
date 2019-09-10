@@ -6,7 +6,6 @@
   <artifactId>sonar-cnes-export-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
   <version>1.2</version>
-
   <name>SonarQube CNES Export Plugin</name>
   <description>CNES plugin for SonarQube that allow users to export quality profiles as OpenXML.</description>
 
