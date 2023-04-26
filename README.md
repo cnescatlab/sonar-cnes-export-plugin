@@ -1,4 +1,12 @@
+## :warning: Deprecation notice
+
+This project is no longer maintained as SonarQube and sonar-cnes-report already provides this kind of functionnality. Feel free to fork this project and adapt plugin to your needs if necessary. Code is available as-is: we do not give any support for this project anymore.
+
+
+
 # SonarQube CNES Export Plugin [![Build Status](https://travis-ci.org/lequal/sonar-cnes-export-plugin.svg?branch=master)](https://travis-ci.org/lequal/sonar-cnes-export-plugin) [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=fr.cnes.sonar.plugins.export:sonar-cnes-export-plugin&metric=alert_status)](https://sonarcloud.io/dashboard?id=fr.cnes.sonar.plugins.export%3Asonar-cnes-export-plugin)
+
+
 SonarQube is an open platform to manage code quality. This plugin adds ability to launch export directly from the web interface the rules of a given quality profile.
 
 This plugin is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
